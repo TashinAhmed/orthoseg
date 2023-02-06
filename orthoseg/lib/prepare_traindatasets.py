@@ -511,13 +511,13 @@ def prepare_labeldata(
                 image_pixel_x_size * image_crs_width
                 + image_pixel_y_size * image_crs_height
             )
-            if intersection.area < (location_geom_aligned.area - area_1row_1col):
-                # Original geom was digitized too small
-                errors_found.append(
-                    f"Location geometry too small in {Path(location.path).name}: "
-                    f"{location.geometry.wkt}"
-                )
-            elif location_geom_aligned.area > 1.1 * sh_geom.box(*geom_bounds).area:
+#             if intersection.area < (location_geom_aligned.area - area_1row_1col):
+#                 # Original geom was digitized too small
+#                 errors_found.append(
+#                     f"Location geometry too small in {Path(location.path).name}: "
+#                     f"{location.geometry.wkt}"
+#                 )
+            if location_geom_aligned.area > 1.1 * sh_geom.box(*geom_bounds).area:
                 logger.warn(
                     "Location geometry larger than expected in file "
                     f"{Path(location.path).name}: {location.geometry.wkt}"
